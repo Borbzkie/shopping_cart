@@ -45,7 +45,7 @@
                     price : this.price
                 }       
                 
-                await this.$axios.post('http://127.0.0.1:8000/api/items', item)
+                await this.$axios.post('/items', item)
                 .then( resp => {
                        
                         if (resp.data.success === true && resp.status === 200) {
