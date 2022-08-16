@@ -51,7 +51,8 @@
             return { 
                 title: 'Items',
                 items: [],
-                item : ''
+                item : '',
+                apiURL: 'http://127.0.0.1:8000/api'
             }
         },
         methods: {
@@ -71,11 +72,11 @@
             },
 
             async getItems() {
-                 await this.$axios.get('/items')
+                 await this.$axios.get('/api/items')
                 .then(resp => {
                     this.items = resp.data.data
                     return this.items
-                })                
+                }).catch()               
             },
 
             async searchItem() {

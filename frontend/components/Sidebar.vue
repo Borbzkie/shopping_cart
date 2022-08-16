@@ -6,7 +6,7 @@
                     <nuxt-link to="/" class="nav-link">Home</nuxt-link>
                 </li>
                 <li class="nav-item">
-                    <nuxt-link to="/item/"   class="nav-link">Item</nuxt-link>
+                    <nuxt-link to="/item"   class="nav-link">Item</nuxt-link>
                 </li>
                 <li class="nav-item">
                     <nuxt-link to="/cart"   class="nav-link">Cart</nuxt-link>
