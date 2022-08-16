@@ -14,16 +14,34 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      // { name: 'csrf-token', content:'csrf_token'},
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { 
+        rel: 'icon', 
+        type: 'image/x-icon', 
+        href: '/favicon.ico' 
+      },
+      {
+        rel:'stylesheet',
+        href:'css/boostrap.min.css'
+      },
+       {
+        rel:'stylesheet',
+        href:'css/dashboard.css'
+      },
+       {
+        rel:'stylesheet',
+        href:'css/style.css'
+      }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -43,7 +61,7 @@ export default {
   ],
 
   axios : {
-
+    baseURL: 'http://127.0.0.1:8000/api'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
