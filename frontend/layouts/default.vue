@@ -18,13 +18,5 @@ export default {
 </script>
 
 <style >
-    /* section {
-         display: inline-block;
-         width: 500px;
-         vertical-align: top;
-    } */
-
-    body {
-      @apply h-3/5;
-    }
+    
 </style>
