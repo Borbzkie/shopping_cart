@@ -1,7 +1,8 @@
 <template>
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Shopping Cart</a>
-            
+        <header class="lg:flex lg:items-center lg:justify-between  bg-cyan-900 w-full p-4 ">
+            <div class="flex-1 min-w-0">
+                <h2 class="text-2xl font-bold leading-7  sm:text-3xl sm:tracking-tight sm:truncate text-white">Shopping Cart</h2>
+            </div>
         </header>
 </template>
 
@@ -12,8 +13,5 @@ export default {
 </script>
 
 <style>
-    /* header {
-        padding: 2px;
-        border-bottom: 2px solid grey;
-    } */
+  
 </style>

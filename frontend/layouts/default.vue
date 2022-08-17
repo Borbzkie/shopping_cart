@@ -1,17 +1,13 @@
 <template>
-  <div>
+  <div class="bg-gray-100 h-screen">
       <MainHeader />
-      <div class="container-fluid">
-        <div class="row">
+      <div class="flex flex-row h-5/6">
             <Sidebar />
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="flex-auto  card  m-4 p-4 bg-gray-200 w-auto">
                  <Nuxt />
             </main>
-            <Footer />
-        </div>
-        
       </div>
-      
+      <Footer />
   </div>
 </template>
 
@@ -21,10 +17,14 @@ export default {
 }
 </script>
 
-<style>
+<style >
     /* section {
          display: inline-block;
          width: 500px;
          vertical-align: top;
     } */
+
+    body {
+      @apply h-3/5;
+    }
 </style>
