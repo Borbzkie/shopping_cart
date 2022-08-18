@@ -1,7 +1,9 @@
 <?php
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/items', ItemController::class);
-Route::get('/items/search/{name}', [ItemController::class,'search']);
-// Route::get('/items', [ItemController::class, 'index']);
-// Route::post('/items', [ItemController::class, 'store']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::post('register', [UserController::class, 'create']);
+Route::post('/login', [UserController::class, 'login']);
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::group(['middleware' => ['auth:sanctum'] ], function () {
+    Route::resource('/items', ItemController::class);   
+    Route::get('/items/search/{name}', [ItemController::class,'search']);
+}); 
