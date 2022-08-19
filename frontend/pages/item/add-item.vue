@@ -1,7 +1,7 @@
 <template>
     <div class="grid justify-items-center">
          <div class="card w-96 mt-20">   
-            <h4 class="text-lg font-bold text-gray-600 pb-2 my-2 border-b border-gray-400">New Item Entry</h4>
+           
             <form @submit.prevent="onSubmit">
                 <div class="mb-3">
                     <label for="description" class="block">Description :</label>

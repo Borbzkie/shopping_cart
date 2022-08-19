@@ -1,5 +1,6 @@
-<template>
+<template v-if="$auth.loggedIn"> 
   <div class="bg-gray-100 h-screen">
+      
       <MainHeader />
       <div class="flex flex-row h-5/6">
             <Sidebar />
