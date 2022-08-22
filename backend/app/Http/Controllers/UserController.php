@@ -8,12 +8,18 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {   
-    public function me(Request $request) {
-        return  response()->json(['data' => $request->user()]);
+    public function index(Request $request) {
+        
+        return response()->json([
+            'data' => $request->user()
+        ]);
     }
+
+    
     public function store(Request $request) {
 
         $data = $request->validate([
@@ -38,24 +44,35 @@ class UserController extends Controller
     
     public function login(Request $request) {
         
-        if (!auth()->attempt($request->only('email', 'password'))) {
-            throw ValidationException::withMessages([
-                'email'=> "invalid email"
-            ]);
+        $data = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]); 
+
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return response()->json([
+                'message' => 'Invalid login details'
+            ], 401);
         }
-       
-    
-        $request->session()->regenerate();
-        return response()->json(null, 201);
 
     
+        // $request->session()->regenerate();
+        // return response()->json(null, 201);
+
+        return response()->json([
+            'status'=> 1,
+            'message' => 'LoggedIn'
+        ],201);
         // $data = $request->validate([
         //     'email' => 'required|email',
         //     'password' => 'required'
         // ]);
         
+
+
         //  $user = User::where('email', $data['email'])->first();
 
+      
 
         // if (!isset($user->id) && Hash::check($data['password'], $user->password)) {
 
@@ -76,6 +93,12 @@ class UserController extends Controller
 
 
 
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
     }
 
 }

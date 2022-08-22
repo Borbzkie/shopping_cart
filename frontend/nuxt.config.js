@@ -49,82 +49,50 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     '@nuxtjs/dotenv',
-    '@nuxtjs/auth-next'
+   
   ],
 
-  // router : {
-  //   middleware: ['auth']
-  // },
+  router : {
+    middleware: ['auth']
+  },
   auth: {
     strategies: {
-      laravelSanctum: {
+     laravelSanctum: {
         provider: 'laravel/sanctum',
         url: process.env.BASE_URL,
-        endpoints: {
-          login: {
-            url: '/api/login',
-            method: 'post'
-          },
-          logout: {
-            url: '/api/logout'
-          }
-        },
+        // endpoints: {
+        //   login: {
+        //     url: '/login',
+        //   },
+        //   logout: {
+        //     url: '/logout'
+        //   },
+        //   user: {
+        //     url: '/api/user'
+        //   }
+        // },
         // user: {
-        //   property: false
+        //   property: 'data',
+        //   // autoFetch: true
         // }
       }
 
     },
     redirect: {
       login: '/login',
-      logout: '/logout',
+      logout: '/login',
       home: '/'
     }
   },
 
-  // auth: {
-  //   strategies: {
-  //     local: {
-  //       token: {
-  //         property: 'access_token',
-  //         global: true,
-  //         type: 'bearer'
-  //       },
-  //       user: {
-  //         property: false
-  //       },
-  //       endpoints: {
-  //         login: {url: '/api/login', method:'post'},
-  //         logout: {url: '/api/logout', method: 'post'}
-  //       }
-  //     }
-  //   },
-  //   redirect: {
-  //     login: '/login',
-  //     logout: '/login',
-  //     home: '/'
-  //   }
-  // },
-
+  
   axios : {
     baseURL: process.env.BASE_URL,
     credentials: true,
-    // init(axios) {
-    //   axios.defaults.withCredentials = true
-    // },
-    // proxy: true,
   },
-
-  
-
-  // proxy: {
-  //   '/api/': {
-  //     target: process.env.BASE_URL,
-  //     pathRewrite: { '^/api/': '' }
-  //   }
-  // },
-
+ 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: {

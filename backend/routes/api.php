@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Route::post('register', [UserController::class, 'store']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('login', [UserController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', [UserController::class,'me']);
 
 Route::group(['middleware' => ['auth:sanctum'] ], function () {
+    Route::get('/user', [UserController::class, 'index']);
+    Route::post('/logout', [UserController::class, 'logout']);
     Route::resource('/items', ItemController::class);   
     Route::get('/items/search/{name}', [ItemController::class,'search']);
-    
 }); 
+
+

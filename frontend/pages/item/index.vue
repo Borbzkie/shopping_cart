@@ -3,7 +3,7 @@
     <div>    
         <div class="flex flex-row ">
             <h1 class="basis-3/6 font-bold text-2xl text-gray-700">{{ title }}</h1>
-            {{ $user.loggedIn }}
+            {{ $auth.loggedIn }}
             <div class="basis-4/12">
                 <form @submit.prevent="searchItem" class="" role="form">
                     <input type="text" name="item" class="form-input rounded text-lg px-4 py-1 m-1" v-model="item" required>
@@ -77,7 +77,7 @@
             },
 
             async getItems() {
-                await this.$axios.get('/api/items')
+                await this.$axios.get('/api/items/')
                 .then(resp => {
                     this.items = resp.data.data
                     return this.items
@@ -107,6 +107,7 @@
         },
         mounted() {
            this.getItems()
+        //    this.$axios.$get('/sanctum/csrf-cookie')
         }
         
     }
