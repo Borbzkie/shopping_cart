@@ -1,7 +1,7 @@
 <template>
   <div>
      <h1 class="basis-3/6 font-bold text-2xl text-gray-700">{{ title }} Page</h1> 
-     <h2> {{ user.name }}</h2>
+     <h2 class="my-2  text-2xl" >Hi  {{ user.name }}</h2>
   </div>
 </template>
 
